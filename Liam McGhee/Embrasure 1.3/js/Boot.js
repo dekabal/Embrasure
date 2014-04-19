@@ -40,7 +40,6 @@ BasicGame.Boot.prototype = {
     this.load.tilemap('map','assets/tiled/otherworld2.json', null, Phaser.Tilemap.TILED_JSON);
 this.load.image('otherworld','assets/imgs/othersidebysteve_edit1.png',16,16);
         this.load.image('othersidebysteve32','assets/imgs/othersidebysteve32.png',32,32);
-        this.load.image('othersidebysteve_edit1','assets/imgs/othersidebysteve32.png',32,32);
         
     this.load.image('chains','assets/imgs/chainlinkpagerusty.png',16,16);
         this.load.tilemap('level-one','assets/tiled/level1_tilmap.json', null, Phaser.Tilemap.TILED_JSON);

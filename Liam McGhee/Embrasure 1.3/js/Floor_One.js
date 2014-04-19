@@ -43,7 +43,7 @@ BasicGame.Floor_One.prototype = {
 
         // set-up world map
         map = this.add.tilemap('floor_one');
-        map.addTilesetImage('othersidebysteve_edit1');
+        map.addTilesetImage('othersidebysteve32');
 
 
         layer1 = map.createLayer('floor');

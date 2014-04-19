@@ -35,10 +35,6 @@ var items;
 var doors;
 var sprint = 0;
 var timer = 0;
-var playerLight;
-var lighting;
-var rect;
-var disc;
 
 
 
@@ -81,12 +77,12 @@ BasicGame.Intro.prototype = {
        
 
         // light system
-        //light = this.add.sprite(0, 0, 'light');
-       // light.fixedToCamera = true;	
+        light = this.add.sprite(0, 0, 'light');
+        light.fixedToCamera = true;	
 
-       // darkness = this.game.add.sprite(0, 0, 'darkness');
-       // darkness.fixedToCamera = true;
-        //darkness.alpha = 0.1;
+        darkness = this.game.add.sprite(0, 0, 'darkness');
+        darkness.fixedToCamera = true;
+        darkness.alpha = 0.1;
         
         
         //set player attack key
@@ -490,9 +486,9 @@ BasicGame.Intro.prototype = {
         
             
          // fade in text
-        //if(darkness.alpha <= 1)
-           // darkness.alpha += 0.005;
-       // else{
+        if(darkness.alpha <= 1)
+            darkness.alpha += 0.005;
+        else{
             player.position.x = 1200;
             player.position.y = 884;
             player = null; // player variable
@@ -511,7 +507,7 @@ BasicGame.Intro.prototype = {
             timer = 0;
             
             this.game.state.start('Floor_One');
-       // }
+        }
         
         
     },
