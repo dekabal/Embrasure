@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="35" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="othersidebysteve_edit1" tilewidth="32" tileheight="32">
+  <image source="othersidebysteve_edit1.png" width="960" height="512"/>
+ </tileset>
+ <layer name="Floor" width="50" height="35">
+  <data encoding="base64" compression="zlib">
+   eJztl18OgjAMxscFRnzWI0DwVh5FPYSP6iF8VA/jLYSExdq0c27dH5Ev+UKQOvprO0Sl0msxWlqrKr5h/oM7dB7qlBxdROfqh3QvZo7vfKjizlQqjouF41O9S+KYylypwNmx9Sl3P6R+Q3JzSDh1P5aWfe47Vzn6MXDM+9ztuWv0YAxl8nKJ3fZxO8L7iri5gOpItnFI3ic2x7HP90T4PHP8DYeE8Lo2DinF4MCaCse1z/dG+J6Yg5pB23o+sVS86zomllv31zxo48jNMQ/SwM1oTZjKAV/n7uGi0He0BrkdjzU4Uvmb65jD9z1RgsNWc2jISHHl5DB1xfm1o7lzql8lcOBam8+04uerJA6cC5wvXH8qBsaVxGHbGxxXCRzcnJjcuLnS6p2vFeDohDhczfUwhKMLsFKv/Qz3OVVrjkeD7/rkk0LrSP/FsZ4tVKkz
+  </data>
+ </layer>
+ <layer name="Walls" width="50" height="35">
+  <data encoding="base64" compression="zlib">
+   eJzdWUFOwzAQ9B0p/Qag9BsVgW9QQh/ScuQXcAH+xS+whUdaLZu146wj4pFGStaJ7fGOvG46OOfOhBfPF3bNqbXNfb6kjccHz9Gtg0vFvoOGc8X+KWrqCBpayEfwVQv5GCK3jtGt56uawF67BlrxVW0dLexXLdWPrfnqKpJii76a0tGCr7BfoY48e54SBLRn0E/o+97zgYyF+9GAGKd2Hbz2vBF4azxO7Tp4mIjfGY9Tuw6upYP7qleenWrrlFipDqlPDdRXO/c71x1jJ8QopXdATYfWJ7jPmEsAfNUp8+2E/nK5VIe2diB0wFeSZr7WfdSEONUnaX30PDIN4f4psTZ07fgYHYtDB3yF9p69m+u1vTC3lCe1NUj5FnEXc1Frv6K566MmbR+ZC7oX4DvDkEHUYQ4eWzpXaV1Tc7I4X0nalqDEHxZ1UMvH3DoQUDIfi/NVKh9zfVaiw+J81aqvKGitykWpDmtf1divUrD4zvAffGXxnQG/EVFjNeTkqsQfFr4K/6Pg/GGBEn+gDr55vru///VI16l2ev3h+en5Tfjq+ZX5fu51yMUPH36IMQ==
+  </data>
+ </layer>
+ <layer name="Objects" width="50" height="35">
+  <data encoding="base64" compression="zlib">
+   eJzt1VEKgCAMBmCDukkn6S4dp3roGNVBKsgrtd5CJCXMtvF/MBQE21CXMQAAAADwVln8nUEaWurg5KCwD6MNrN/HHMZM37l0dN96ikHQvfPlPNF8plgE1eHLeaX5RrELqkNizrHwPsLcftUm2hfvAziomJwblzwgXq3kzBoldQD8ye3hX/X00L6a/yUnFHEpyg==
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="150" height="150" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="otherworld" tilewidth="16" tileheight="16">
+  <image source="../imgs/othersidebysteve_edit1.png" width="480" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="150" height="150">
+  <data encoding="base64" compression="zlib">
+   eJzt1bFRQ1EUQ0FXAI1AIUAhHhcCtI1LIGCeLLHBnQ1f8OXjp8vl8ny/J/IPfbnfK/nHpnfNTdO75qbpXXPT9K65aXrX3DS9a26a3jU3Te+am6Z3zU3Tu+am6V1z0/SuuWl619w0vWtumt41N03vmpumd81N07vmpuldc9P0rrlpetfcNL1rbpreNTc9sd+3+727h7mPA9/9xH6vh97h77wdeOdEr66H3uHvvB14R6/+n3pFvdKrFvWKeqVXLeoV9UqvWtQr6pVetahX1Cu9alGvqFd61aJeUa/0qkW9ol7pVYt6Rb3Sqxb1inqlVy3qFfVKr1rUK+qVXrWoV9QrvWpRr6hXetWiXlGv9KpFvaJe6VWLekW90qsW9Yp6pVct6hX1Sq9a1CvqlV61qFfUK71qUa+oV3rVol5Rr/SqRb2iXulVi3pFvdKrFvWKeqVXLeoV9UqvWtQr6pVetahX1Cu9alGvqFd61aJeUa/0qkW9ol7pVYt6Rb3Sqxb1inqlVy3qFfVKr1rUK+qVXrWoV9QrvWpRr6hXetWiXlGv9KpFvaJe6VWLekW90qsW9Yp6pVct6hX1Sq9a1CvqlV61qFfUK71qUa+oV3rVol5Rr/SqRb2iXulViyu9+rzfl3uY+z7w3R/h98M9H+H/nnumd81N07vmpuldc9P0rrlpetfcNL1rbpreNTdN75qbpnfNTdO75qbpXXPT9K65aXrX3DS9a26a3jU3Te+am6Z3zU3Tu+am6V1z0/SuuWl619w0vWtu+gNck4mp
+  </data>
+ </layer>
+</map>
