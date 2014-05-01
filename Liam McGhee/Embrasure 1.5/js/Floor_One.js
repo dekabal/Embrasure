@@ -85,14 +85,13 @@ BasicGame.Floor_One.prototype = {
         
         
         
-        this.ItemManager = new ItemManager(player,this.game);
-        this.ItemManager.createItem(864, 640, 1, 1, 0, 0,'crowbar');
-        this.ItemManager.createItem(288, 800, 1, 1, 0, 0, 'hammer');
-        this.ItemManager.createItem(1536, 480, 1, 1, 0, 0,'bucket_empty');
-        this.ItemManager.createSetPiece(1504, 224, .5, 1, .5, 0,'pipe_intersection');
-        this.ItemManager.createItem(1504, 288, 1, 1, .3, 0,'pipe_one');
-        this.ItemManager.createSetPiece(1504, 288, .5, 1, .5, 0,'pipe_one');
-        this.ItemManager.createSetPiece(1504, 354, .5, 1, .5, 0,'pipe_intersection');
+        player.itemManager.createItem(864, 640, 1, 1, 0, 0,'crowbar');
+        player.itemManager.createItem(288, 800, 1, 1, 0, 0, 'hammer');
+        player.itemManager.createItem(1536, 480, 1, 1, 0, 0,'bucket_empty');
+        player.itemManager.createSetPiece(1504, 224, .5, 1, .5, 0,'pipe_intersection');
+        player.itemManager.createItem(1504, 288, 1, 1, .3, 0,'pipe_one');
+        player.itemManager.createSetPiece(1504, 288, .5, 1, .5, 0,'pipe_one');
+        player.itemManager.createSetPiece(1504, 354, .5, 1, .5, 0,'pipe_intersection');
         //this.ItemManager.createItem(832, 416, 1, 1, 0, 0,'crowbar');
         //this.ItemManager.createItem(832, 416, 1, 1, 0, 0,'crowbar');
        
@@ -124,7 +123,7 @@ BasicGame.Floor_One.prototype = {
         this.physics.arcade.collide(player.sprite,layer1);
         this.physics.arcade.collide(player.sprite,layer2);
         this.physics.arcade.collide(player.sprite,layer3);
-        this.physics.arcade.collide(player.sprite,this.ItemManager.getSetPieceGroup());
+        this.physics.arcade.collide(player.sprite, player.itemManager.getSetPieceGroup());
         
         //this.physics.arcade.collide(player.sprite,doors, this.openDoor, null, this);
         player.inventory.render();
@@ -196,7 +195,7 @@ BasicGame.Floor_One.prototype = {
     
     interact: function(){
         
-        this.physics.arcade.overlap(player.sprite, this.ItemManager.getItemGroup(), player.addToInventory, null, player);
+        this.physics.arcade.overlap(player.sprite, player.itemManager.getItemGroup(), player.addToInventory, null, player);
         
     },
     

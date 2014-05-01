@@ -1,6 +1,7 @@
 function Player(game, spriteString, xPos, yPos, startFrame){
     this.game = game;
     this.inventory = new Inventory(3,3,game);
+    this.itemManager = new ItemManager(this, game);
     this.sprite = this.createPlayer(spriteString, xPos, yPos, startFrame);
     this.sprint = 0;
     this.light;
@@ -160,14 +161,17 @@ Player.prototype = {
     },
     
     addToInventory: function(extra, item){
-        console.log(this.inventory.itemsList.length);
-
-        item.visible = this.inventory.inventory.visible;
-        item.scale.setTo(1.75,1.75);
-        item.bringToTop();
-        //this.inventorySystem.itemsList.remove(item,false);
-        this.inventory.inventoryList.push(item);
-        this.inventory.itemsList.splice(1,1);
+        
+        if(!this.itemManager.specialInstruction(item)){
+            item.visible = this.inventory.inventory.visible;
+            item.scale.setTo(1.75,1.75);
+            item.bringToTop();
+            //this.inventorySystem.itemsList.remove(item,false);
+            this.inventory.inventoryList.push(item);
+            //this.inventory.itemsList.splice(1,1);
+        }
+        
+        
         
         console.log(this.inventory.inventoryList[0]);
         

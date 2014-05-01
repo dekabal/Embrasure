@@ -24,12 +24,19 @@ ItemManager.prototype = {
         this.setPieces.add(temp_item);
     },
     
-    modifyItem: function(item){
+    
+    
+    specialInstruction: function(item){
         if(item.key == 'pipe_one'){
             item.kill();
             this.createItem(item.position.x,item.position.y, 1, 1, .3, 0,'pipe_broken');
-            
+            return true;
         }
+        else if(item.key == "pipe_broken"){
+        
+        }
+        
+        return false;
         
     },
     

@@ -25,6 +25,7 @@ function Inventory(x,y,game){
 
 Inventory.prototype = {
 	initialize : function(){
+        /*
 		this.itemsList.push((new Item(this.game, 300,100,6)));
 		this.itemsList.push((new Item(this.game, 400,500,3)));
 		this.itemsList.push((new Item(this.game, 50,400,7)));
@@ -35,6 +36,7 @@ Inventory.prototype = {
 		this.itemsList.forEach(function(item){
 			this.game.physics.enable(item, Phaser.Physics.ARCADE);
 		},this);
+        */
 
 	},
 	addToInventory : function(i){
