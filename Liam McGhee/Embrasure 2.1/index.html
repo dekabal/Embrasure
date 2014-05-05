@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Embrasure 1.3</title>
+<script src="js/phaser.min.js"></script>
+<script src="js/Player.js"></script>
+<script src="js/SimpleLighting.js"></script>
+<script src="js/ItemManager.js"></script>
+<script src="js/Inventory.js"></script>
+<script src="js/Sokoban.js"></script>
+<script src="js/Boot.js"></script>
+<script src="js/Preloader.js"></script>
+<script src="js/MainMenu.js"></script>
+<script src="js/Game.js"></script>
+<script src="js/Level_One.js"></script>
+<script src="js/Intro.js"></script>
+<script src="js/Floor_One.js"></script>
+<script src="js/Floor_Two.js"></script>
+</head>
+<body>
+
+<div id="gameContainer"></div>
+
+<script type="text/javascript">
+
+CanvasRenderingContext2D.prototype.drawPieSlice = function(x, y, radius, startAngle, endAngle) {
+    this.beginPath();
+    this.moveTo(x, y);
+    this.lineTo(x + radius * Math.cos(startAngle), y + radius * Math.sin(startAngle));
+    this.arc(x, y, radius, startAngle, endAngle, false);
+    this.lineTo(x, y);
+    this.closePath();
+    this.fill();
+}
+
+window.onload = function() {
+
+// Create your Phaser game and inject it into the gameContainer div.
+// We did it in a window.onload event, but you can do it anywhere (requireJS load, anonymous function, jQuery dom ready, - whatever floats your boat)
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'gameContainer');
+
+// Add the States your game has.
+// You don't have to do this in the html, it could be done in your Boot state too, but for simplicity I'll keep it here.
+game.state.add('Boot', BasicGame.Boot);
+game.state.add('Preloader', BasicGame.Preloader);
+game.state.add('MainMenu', BasicGame.MainMenu);
+game.state.add('Game', BasicGame.Game);
+game.state.add('Level_One', BasicGame.Level_One);
+game.state.add('Intro', BasicGame.Intro);
+game.state.add('Floor_One', BasicGame.Floor_One);
+game.state.add('Floor_Two', BasicGame.Floor_Two);
+
+// Now start the Boot state.
+game.state.start('Boot');
+
+};
+
+</script>
+<h2>Embrasure</h2>
+<ul>
+
+<li><strong>High Concept:</strong>
+Embrasure is a 2D, top down horror game in which the player must try to escape from a factory by collecting keys to unlock doors, avoiding monsters and ghosts, and figuring out what happened to make the factory so horrific.
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+Players should have a sense of fear and paranoia while playing Embrasure. They should be constantly worried about when, or if, a monster or ghost will appear and how they are going to escape from it and the factory. Further, when running from or dealing with monsters, players should experience high levels of tension. The game should also make players want to explore their surroundings in order to find the required items, find secret rooms, and solve puzzles. 
+</li>
+
+<li><strong>Genre:</strong>
+Top-down 2D survival horror
+</li>
+
+<li><strong>Game play:</strong>
+The player controls are arrow keys for movement, Z to pick-up keys, hold SHIFT to sprint (cannot sprint indefinitely), and R to restart the game.
+<p>
+<ul>
+<li>System Dynamics:
+	<ul>
+	<li>Objects: Player, Roaming Monster, Eyeless Girl Monster, Blue Man Monster, keys, doors
+	<li>Object Properties
+		<ul>
+		<li>Player Properties: keys, items
+		<li>Roaming Monster Properties: monster name, movement pattern
+		<li>Eyeless Girl Monster: monster name, movement pattern
+		<li>Blue Man Monster: monster name, movement pattern
+		<li>Key Properties: key name
+		<li>Door Properties: door name, accepted key
+		</ul>
+	<li>Object Behaviours
+	<ul>
+		<li>Player Behaviours: Can move up, down left or right. Can pick up keys. Can open doors. Can sprint but only for a limited time. Changes level or wins the game if they make it to a specific point on the map.
+		<li>Roaming Monster Behaviour: Will move towards the player if it is within 300 pixels of the player. Teleports to a random location once it is out of range of the player.
+		<li>Eyeless Girl Monster Behaviour: Starts following player once player enters trigger area. Teleports to a position within 150 pixels of the player when she is 150 pixels away from the player.
+		<li>Blue Man Monster: Spawns once key is picked up. Runs forward after 2 seconds
+		<li>Key Behaviour: Disappears when picked up.
+		<li>Door Behaviour: disappears if it is touched by the player with the proper key
+	</ul>
+	<li>Object Relationships
+	<ul>
+	<li>	Player Relationships: Players ability to open a door is related to the type of keys they are holding.
+	<li>	Roaming Monster Behaviour: Movement pattern is related to the position of the player. The monster will move to align itself with the x-axis of the player and then move towards the player on the y-axis.
+	<li>	Eyeless Girl Monster Behaviour: Movement pattern is related to the position of the player. If the player is more than 150 pixels away from the monster, the monster will teleport to the player.
+	<li>	Blue Man Monster: Monsters spawn is directly related to the player’s action of picking up a specific key.
+	<li>	Key Relationships: Key will disappear if picked up by the player
+	<li>	Door Relationships: A door disappearing is directly related to the players position to the door (player must be touching the door) and whether or not the proper key is held by the player
+	</ul>
+	</ul>
+</ul>
+<p>
+The core mechanics of Embrasure are finding keys, unlocking doors, and avoiding monsters. Players will be exploring the haunted factory in order to find keys to unlock doors to get to the next area of the map. Once the player has made it to the end of the map, they will go to the next level. While a player is doing this, they will have to avoid all manner of monster and ghost. The player wins once they have made it through every level and out of the factory.In future versions of Embrasures, players will be able to find other types of key items to unlock doors, defeat monsters, or solve puzzles. Players will also be able to engage in and solve puzzles which range from finding specific items to figuring out ways to properly elude or defeat certain monsters.
+</li>
+
+<li><strong>Prototype goal:</strong>
+This prototype is trying to evaluate the effectiveness of a lighting system in Phaser in creating a scary, tense atmosphere. This prototype is also trying to test whether or not a monster avoidance mechanic (with varied monster movement patterns and behaviors) and exploration mechanic would be fun or interesting to players. Further, this prototype is testing how fun a rudimentary puzzle solving mechanic, in which players must find keys to open doors, is to the player.
+</li>
+
+<li><strong>Features:</strong>
+A variety of monsters/ghosts with varied movement patterns and strategies for defeating them, a static lighting system (best we can do with Phaser), a door and key puzzle system, an intriguing and interesting setting and level design, and a transitioning music system.
+</li>
+
+<li><strong>Setting/Premise:</strong>
+Embrasure is set in a factory located somewhere in West Virginia. The factory itself appears normal at first but as you descend into its depths, it becomes more dilapidated and old. Eventually, the factory will start to reveal its sinister past as monsters and ghosts start to come out of the woodwork. 
+
+You play James Mathews, a 22 year old who is into urban exploring. James frequents message boards online to find new or interesting buildings or locations to explore. He is generally a cautious individual but his curiosity often lands him in dangerous situations.
+
+</li>
+
+<li><strong>Story:</strong>
+You play James Mathews, a 22 year old urban explorer who one day decides to explore an abandoned factory located in the city. You had read some of the rumors and stories surrounding this factory on a website called weirdlocationforums.com, but there was nothing definite about who built it or for what purpose. Upon entering the factory, you spy a flight of stairs and decide to follow them down into the depths of the factory. After what seems like an hour, you finally arrive at the bottom, and start to explore the factory basement. After looking around for a while, you start to get a weird feeling. The walls and floors seem more dirty and dilapidated than they previously were, and your heart is pounding in your chest. You feel the need to leave, now! The only problem is, you can’t find the stairs in this darkness, and your flashlight is only so bright. Can you find your way out before something finds you?</li>
+<p><p>
+The game will use dark, moody lighting along with fast and tense chase sequences in order to illicit a feeling of dread in the player. Along with this, a series of creepy events (which are triggered by player action), scary encounters with a variety of monsters and ghosts, and creepy music will be used to create dramatic tension between the player and the game. Further, the level design will be used to slowly reveal the story of what happened to the factory as the player traverses each level. Clues, in the form of notes, and scenes in the level will used to create a dynamically revealing story. Overall, the creepy, horror themed atmosphere combined with the tense player vs. monster interactions will be used to foster a creepy, tense gameplay experience for the player and tell the story through the players exploration and interaction with the levels.
+<li><strong>Target Audience:</strong>
+People who enjoy horror based story driven games.
+</li>
+
+<li><strong>Play time:</strong>
+10 to 15 minutes
+</li>
+
+<li><strong>Strategies:</strong>
+In Embrasure, players should move cautiously and listen for a heartbeat, which indicates that a monster is near. When encountering a monster, players should stop and figure out which direction the monster is coming from so they don’t end up running into him. After that, the player should try to lose the monster by sprinting (the heartbeat will stop when the monster is no longer chasing the player). While sprinting, the player moves slightly faster than the monster, so if the player times their sprint right, they will be able to sprint out of range of or around the monster before they get caught. Not all monsters act the same play fair, and avoiding being caught by some of them can be difficult. Players should look for changes in music or their surroundings which will indicate that something is about to happen. If anything, players can always replay the level to have a better chance of avoiding the monsters and traps. 
+<p><p>
+Exploring the entire level will give the player a much better chance of finding keys to unlock doors or finding the exit. If a player comes upon a door they can’t open, they should try to remember what their surroundings are so they can find their way back to the door (this can sometimes be difficult as the factory is very dark and your flashlight is not the powerful) once they have the proper key. The factory can be very dangerous, so players should be cautious while exploring rooms. Not all rooms contain a key or useful item, and some may even contain something very sinister.
+</li>
+
+<li><strong>Estimated Schedule:</strong>
+<ul>
+<li>Estimated Time for Individual Jobs
+<ul>
+	<li>Improving Monster AI – 2 to 3 days
+	<li>Level Design - 1 to 2 weeks
+	<li>Art/Music Design – 1 to 2 weeks
+	<li>Story Writing – 3 days
+	<li>Coding (includes testing and play testing) – 2 to 3 weeks
+	</ul>
+<li>Tentative Schedule
+<ul>
+	<li>Pre-Planning/Planning – 1 week
+	<ul>
+		<li>Map out level designs
+		<li>Gather art/music resources, determine what resources need to be created
+		<li>Plan basic code structure
+		<li>Create outline for story
+		</ul>
+	<li>Design Phase – 1 week – 1.5 weeks
+	<ul>
+		<li>Create level maps
+		<li>Create any needed art or sound assets
+		<li>Fill in outline of the story
+		</ul>
+	<li>Iteration 1 – 1 week to 2 weeks
+	<ul>
+		<li>Creation – 1 week
+		<ul>
+		<li>	Write code for the game
+		<li>	Finish any leftover art/music assets
+		<li>	Finalize story
+			</ul>
+		<li>Testing – 2 to 3 days
+		<ul>
+		<li>	Playtest code/get player feedback on game
+			</ul>
+		<li>Revision – 5 days
+		<ul>
+		<li>	Finish initial coding
+		<li>	Make modifications to game based on player feedback
+			</ul>
+			</ul>
+	<li>Iteration 2 – 5 days
+	<ul>
+		<li>Finalizing – 3 days
+		<li>	Finish coding game (code will go through one more revision after this)
+		<li>	By this time, all art/music/story assets should be finished
+		<li>Testing – 2 days
+		<li>	Playtest code/get player feedback on game
+			</ul>
+	<li>Iteration 3 – 5 days
+	<ul>
+		<li>Make revisions to game based on Iteration 2’s player feedback
+		<li>Finalize code
+		<ul>
+		<li>	Make sure everything works properly
+		<li>	Put finishing touches on it
+		<li>	Set it up in Drop Box
+			</ul>
+		<li>Publish Game
+		</ul>
+	<li>Estimated Time to Completion – 4.5 weeks
+	</ul>
+</ul>
+</li>
+
+<li><strong>Team:</strong>
+I am great at programming and good with putting together a dramatic story. I can build systems that will run fast and efficiently and I’m good at figuring out ways to implement features which Phaser doesn’t really support (See the lighting system in “Embrasure”). I could use a team member who is good at analyzing game design aspects and determining if they would make for a fun player experience. I am not very skilled with graphic and sound design and could desperately use a team member who is good at either or both to work on the art/sound assets. Overall, for this project I could use about 2-3 people to help make this game.</li>
+
+<li><strong>Prototype Assets:</strong>
+<ul>
+	<li>Art Assets
+	<ul>
+		<li>Player Character Sprite Sheet: http://fc05.deviantart.net/fs71/f/2012/289/4/2/corpse_party_rpg_sprite__by_unpayedovertime-d5i212z.png
+		<li>Map Sprite Sheet 1: http://www.emudesc.com/threads/kisiera-tileset-de-silent-hill-para-mi-juego.216794/
+		<li>Map Sprite Sheet 2: http://opengameart.org/content/chainlink-floor-tiles
+		<li>Roaming Monster Sprite Sheet: http://www.rpgmakervx.net/index.php?showtopic=12836&hl=horror
+		<li>Eyeless Girl and Blue Man Sprite Sheets: http://www.rpgmakervxace.net/topic/14156-red-herrings-horror-creepypasta-resources/
+		<li>Key1: http://opengameart.org/content/various-inventory-24-pixel-icon-set
+		<li>Key2: http://opengameart.org/content/keys
+		<li>Key3: http://img1.wikia.nocookie.net/__cb20120815035541/c__/cavestory/images/e/e2/Rusty_Key_%28WiiWare%29.png
+		<li>Title Screen Image: http://psrdownloads.s3.amazonaws.com/textures/metals/rusty-metal/7.jpg
+		</ul>
+	<li>Music Assets
+	<ul>
+		<li>Background Music: http://www.newgrounds.com/audio/listen/91229
+		<li>Secret Room Music: http://www.youtube.com/watch?v=f8fUFmjqXZo
+		<li>Heartbeat: http://www.soundjay.com/heartbeat-sound-effect.html
+		<li>Metal Door Open Sound: http://www.sounddogs.com/results.asp?CategoryID=1021&SubcategoryID=42&Type=1
+		<li>Wooden Door Open Sound: http://www.soundjay.com/transportation/sounds/key-door-insert-1.mp3
+		<li>Blue Man Charge Sound: http://soundbible.com/1814-Scary.html
+		<li>Eyeless Girl Theme: http://www.youtube.com/watch?v=dWEiqR19jq8
+		</ul>
+		</ul>
+
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+There is no Phaser example that resembles my game. I am polishing my previous prototype “Embrasure”.
+</li>
+
+</ul>
+
+</body>
+</html>
