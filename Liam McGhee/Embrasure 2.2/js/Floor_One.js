@@ -64,7 +64,7 @@ BasicGame.Floor_One.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // set collisions
-        map.setCollision([73,74,75,103,104,105,133,134,135,40,41,42,70,72,100,101,102,142,143,144,172,173,174,202,203,204,232,233,234,262,263], true, 'Walls');
+        map.setCollision([31,73,74,75,103,104,105,133,134,135,40,41,42,70,72,100,101,102,142,143,144,172,173,174,202,203,204,232,233,234,262,263], true, 'Walls');
         map.setCollision([31], true, 'Layer 3');
 
        
@@ -86,7 +86,7 @@ BasicGame.Floor_One.prototype = {
 
         player.inventory.createWorldItems([
             {x: 864,y: 640,scaleX:1,scaleY: 1,offsetX: 0,offsetY: 0,spritename: 'crowbar'},
-            {x: 288,y: 800,scaleX: 1,scaleY: 1,offsetX: 0,offsetY: 0,spritename: 'hammer'},
+            {x: 160,y: 816,scaleX: 1,scaleY: 1,offsetX: 0,offsetY: 0,spritename: 'hammer'},
             {x: 1536,y: 480,scaleX: 1,scaleY: 1,offsetX: 0,offsetY: 0,spritename: 'bucket_empty'},
             {x: 1504,y: 288,scaleX: 1,scaleY: 1,offsetX: .3,offsetY: 0,spritename: 'pipe_one'},
             {x: 1248,y: 480,scaleX: 1.2,scaleY: 1.2,offsetX: 0,offsetY: 0,spritename: 'crate'},

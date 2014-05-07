@@ -153,7 +153,7 @@ Player.prototype = {
     
     toggleFlashlight: function(){
         if(this.light.on){
-            this.light.color = [10,10,10];
+            this.light.color = [20,20,20];
             this.light.on = false;
         }
         else{

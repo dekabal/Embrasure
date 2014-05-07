@@ -39,7 +39,7 @@ startGame: function (pointer) {
 this.music.stop();
 
 // And start the actual game
-this.game.state.start('Level_One');
+this.game.state.start('Intro');
 
 }
 
